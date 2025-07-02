@@ -1,2 +1,2 @@
 # PDFChatQA
-Chat Bot menggunakan Ollama dengan RAG
+Chat Bot menggunakan Ollama dengan RAG PDF
