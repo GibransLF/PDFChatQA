@@ -5,3 +5,4 @@ langchain-core
 pypdf
 langchain-text-splitters
 langgraph
+langchain-chroma

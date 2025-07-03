@@ -1,29 +1,43 @@
 from langchain_community.document_loaders import PyPDFLoader
 import asyncio
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_ollama import OllamaEmbeddings
-from langchain_core.vectorstores import InMemoryVectorStore
+from langchain_chroma import Chroma
 
 # load pdf
 async def main():
     loader = PyPDFLoader("./pdf/cv.pdf")
-    pages = []
+    docs = []
     async for page in loader.alazy_load():
-        pages.append(page)
-    return pages
-pages = asyncio.run(main())
+        docs.append(page)
+    return docs
+docs = asyncio.run(main())
 
+assert len(docs) == 1
+print(f"Total characters: {len(docs[0].page_content)}")
+
+#splitting documents
+text_splitter = RecursiveCharacterTextSplitter(
+    chunk_size=1000,  # chunk size (characters)
+    chunk_overlap=200,  # chunk overlap (characters)
+    add_start_index=True,  # track index in original document
+)
+all_splits = text_splitter.split_documents(docs)
+
+print(f"Split blog post into {len(all_splits)} sub-documents.")
 
 # Initialize Ollama embeddings
 embeddings = OllamaEmbeddings(
     model="bge-m3",
 )
 
-text = [page.page_content for page in pages]
-vectorstore = InMemoryVectorStore.from_texts(
-    text,
-    embedding=embeddings,
+#embedding text to vector
+vector_store = Chroma(
+    collection_name="AnantaCV",
+    embedding_function=embeddings,
+    persist_directory="./chroma_langchain_db",
 )
 
-single_vector = embeddings.embed_query(text[0])
+vector_store.add_documents(documents=all_splits)
 
-print(str(single_vector)[:100])
+print("done...")
