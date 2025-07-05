@@ -2,6 +2,8 @@
 Chat Bot menggunakan Ollama dengan RAG PDF
 
 ## Cara penggunaan dasar
+install python, saya menggunakan Python 3.12.7
+
 install kebutuhan jalankan perintah
 ```
 pip install -r .\requirements.txt
