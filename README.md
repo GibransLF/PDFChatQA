@@ -79,7 +79,7 @@ embeddings = OllamaEmbeddings(model="bge-m3")
 untuk mengisi API bisa tambahkan .env dari contoh .env.example dan isi API_KEY yang dimiliki
 
 ```
-GEMINI_API_KEY="" 3 # Your Gemini API Key
+GEMINI_API_KEY="" # Your Gemini API Key
 
 ```
 
