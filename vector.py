@@ -13,6 +13,8 @@ async def main():
     return docs
 docs = asyncio.run(main())
 
+#print(docs)
+
 assert len(docs) == 1
 print(f"Total characters: {len(docs[0].page_content)}")
 
@@ -24,6 +26,7 @@ text_splitter = RecursiveCharacterTextSplitter(
 )
 all_splits = text_splitter.split_documents(docs)
 
+#print(all_splits)
 print(f"Split blog post into {len(all_splits)} sub-documents.")
 
 # Initialize Ollama embeddings
@@ -38,6 +41,7 @@ vector_store = Chroma(
     persist_directory="./chroma_langchain_db",
 )
 
-vector_store.add_documents(documents=all_splits)
+document_ids = vector_store.add_documents(documents=all_splits)
+print(document_ids[:10])
 
 print("done...")

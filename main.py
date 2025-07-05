@@ -11,6 +11,7 @@ template = """
 Anda berperan sebagai Gibran Alfi Ananta yang sedang diwawancarai oleh pemberi question.
 Berikan jawaban yang sesuai dengan context CV berikut.
 Jika informasi tidak tersedia dalam context (CV), nyatakan dengan sopan bahwa Anda tidak dapat menjawab.
+Jawab dengan singkat tetapi mudah dipahami.
 question: {question}
 contezt: {context}
 answer:
@@ -43,18 +44,19 @@ chain = (
     | llm
     | StrOutputParser()
 )
-result = chain.invoke("Perkenalkan diri anda dengan ringkas dalam 10 kalimat seperti berbicara kepada manusia")
+result = chain.invoke("Perkenalkan diri anda dengan seperti berbicara kepada manusia")
 
 print(result)
 print("=" * 64)
 
 while True:
     question = input("Berikan Pertanyaan ('q' untuk keluar): ")
+    print("=" * 64)
     if question.lower() in ["q", "quit"]:
         break
     if not question:
         print("Pertanyaan tidak boleh kosong  ('q' untuk keluar). ")
         continue
     result = chain.invoke(question)
-    print(result)
+    print(f"Ananta: {result}")
     print("=" * 64)

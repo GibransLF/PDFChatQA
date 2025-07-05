@@ -1,5 +1,6 @@
 #pribadi
 pdf/
+chroma_langchain_db/
 1/
 
 # Byte-compiled / optimized / DLL files
@@ -183,3 +184,5 @@ cython_debug/
 #  refer to https://docs.cursor.com/context/ignore-files
 .cursorignore
 .cursorindexingignore
+chroma_langchain_db/chroma.sqlite3
+chroma_langchain_db/chroma.sqlite3
