@@ -98,7 +98,7 @@ Berikan jawaban yang sesuai dengan context CV berikut.
 Jika informasi tidak tersedia dalam context (CV), nyatakan dengan sopan bahwa Anda tidak dapat menjawab.
 Jawab dengan singkat tetapi mudah dipahami.
 question: {question}
-contezt: {context}
+context: {context}
 answer:
 ."""
 ```
