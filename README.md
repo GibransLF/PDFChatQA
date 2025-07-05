@@ -1,7 +1,7 @@
 # PDFChatQA
 Chat Bot menggunakan Ollama dengan RAG PDF
 
-## Cara penggunaan
+## Cara penggunaan dasar
 install kebutuhan jalankan perintah
 ```
 pip install -r .\requirements.txt
