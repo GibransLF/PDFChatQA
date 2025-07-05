@@ -32,7 +32,7 @@ loader = PyPDFLoader("./pdf/cv.pdf")
 ```
 sebagai contoh adalah **PDFChatQA/pdf/cv.pdf**
 
-lalu jalankan perintah ini untukmembuat vector
+lalu jalankan perintah ini untuk membuat vector
 
 ```
 python vector.py
