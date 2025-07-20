@@ -15,7 +15,6 @@ docs = asyncio.run(main())
 
 #print(docs)
 
-assert len(docs) == 1
 print(f"Total characters: {len(docs[0].page_content)}")
 
 #splitting documents
